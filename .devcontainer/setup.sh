@@ -11,7 +11,7 @@ echo "==> Esperando a que PostgreSQL esté listo..."
 until pg_isready -U postgres -q; do sleep 1; done
 
 echo "==> Creando base de datos..."
-createdb -U postgres ecommerce_db 2>/dev/null || echo "     (ya existe, continuando)"
+PGPASSWORD=postgres createdb -U postgres ecommerce_db 2>/dev/null || echo "     (ya existe, continuando)"
 
 echo "==> Cargando tablas y datos de prueba..."
 python src/setup.py
