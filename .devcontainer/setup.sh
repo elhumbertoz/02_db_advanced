@@ -7,6 +7,9 @@ pip install -r requirements.txt --quiet
 echo "==> Configurando .env..."
 cp .env.example .env
 
+echo "==> Iniciando PostgreSQL..."
+sudo service postgresql start
+
 echo "==> Esperando a que PostgreSQL esté listo..."
 until pg_isready -U postgres -q; do sleep 1; done
 
